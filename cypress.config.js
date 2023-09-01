@@ -26,6 +26,7 @@ module.exports = defineConfig({
     specPattern: "cypress/e2e/features/*.feature",
     baseUrl: "https://www.saucedemo.com",
     includeShadowDom: true,
+    chromeWebSecurity: false,
     env: {
       allureReuseAfterSpec: true,
     }
