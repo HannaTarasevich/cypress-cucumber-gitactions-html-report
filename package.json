@@ -4,7 +4,7 @@
   "description": "Test project ",
   "scripts": {
     "cypress:runner": "cypress open --e2e --browser chrome",
-    "cypress:execution": "cypress run --spec cypress/e2e/features/*",
+    "cypress:execution": "cypress run --spec cypress/e2e/features/* --browser chrome",
     "cypress:execution-tags": "cypress run --env tags=@mobile",
     "cypress:execution-allure": "cypress run --env allure=true",
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
