@@ -1,6 +1,5 @@
 # Node artifact files
-node_modules/
-dist/
+node_modules
 
 # Log files
 *.log
@@ -18,12 +17,12 @@ dist/
 Thumbs.db
 
 # Media files
-*.mp4
-*.tiff
-*.avi
-*.flv
-*.mov
-*.wmv
+screenshots
+videos
 
 # Cucumber Report
 reports
+
+# Allure Report
+allure-results
+allure-report
