@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/HannaTarasevich/cypress#readme",
   "scripts": {
-    "cypress:run": "cypress run",
+    "cypress:run": "cypress run --browser chrome",
     "cypress:runner": "cypress open --e2e --browser chrome",
     "cypress:execution": "cypress run --spec cypress/e2e/features/* --browser chrome",
     "cypress:parallel" : "cypress-parallel -s cypress:run -t 2 -d cypress/e2e/features/* -a '\"--browser chrome\"' -m false",
