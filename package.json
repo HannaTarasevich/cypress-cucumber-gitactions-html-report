@@ -27,7 +27,7 @@
   },
   "pre-commit": [
     "features:validate",
-    "eslint:fix"
+    "eslint:validate"
   ],
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.5",
