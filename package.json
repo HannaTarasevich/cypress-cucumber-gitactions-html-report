@@ -2,6 +2,15 @@
   "name": "cypress-cucumber",
   "version": "1.0.0",
   "description": "Test project",
+  "keywords": [
+    "cypress", "cucumber", "gitHubActions"
+  ],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HannaTarasevich/cypress.git"
+  },
+  "homepage": "https://github.com/HannaTarasevich/cypress#readme",
   "scripts": {
     "cypress:runner": "cypress open --e2e --browser chrome",
     "cypress:execution": "cypress run --spec cypress/e2e/features/* --browser chrome",
@@ -10,12 +19,11 @@
     "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
     "allure:report": "allure generate allure-results --clean -o allure-report",
     "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
-    "features:validate": "npx node_modules/gherkin-lint -c .gherkin-lintrc ./cypress/e2e/features"
+    "features:validate": "node node_modules/gherkin-lint -c ./.gherkin-lintrc ./cypress/e2e"
   },
-  "keywords": [
-    "cypress"
+  "pre-commit": [
+    "features:validate"
   ],
-  "license": "ISC",
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.5",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
@@ -23,14 +31,7 @@
     "cypress": "^13.1.0",
     "esbuild": "^0.19.2",
     "gherkin-lint": "^4.2.2",
-    "multiple-cucumber-html-reporter": "^3.4.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HannaTarasevich/cypress.git"
-  },
-  "bugs": {
-    "url": "https://github.com/HannaTarasevich/cypress/issues"
-  },
-  "homepage": "https://github.com/HannaTarasevich/cypress#readme"
+    "multiple-cucumber-html-reporter": "^3.4.0",
+    "pre-commit": "^1.2.2"
+  }
 }
