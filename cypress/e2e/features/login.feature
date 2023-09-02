@@ -8,12 +8,12 @@ Feature: Login page
 
     @TC-1
     Scenario: Success Login
-        When A user enters the username "standard_user", the password "secret_sauce", and clicks on the login button
+        When A user logins as "standard_user"
         Then the url will contains the inventory subdirectory
 
     @TC-2
     Scenario: Blocked Login
-        When A user enters the username "locked_out_user", the password "secret_sauce", and clicks on the login button
+        When A user logins as "locked_out_user"
         Then The error message "Epic sadface: Sorry, this user has been locked out." is displayed
 
     @TC-3

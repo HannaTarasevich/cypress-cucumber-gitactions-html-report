@@ -4,6 +4,9 @@
         "paths": {
             "@pages/*": [
                 "./cypress/pages/*"
+            ],
+            "@data/*": [
+                "./cypress/e2e/data/*"
             ]
         }
     }

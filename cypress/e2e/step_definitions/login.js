@@ -4,13 +4,14 @@ import {
   Then
 } from '@badeball/cypress-cucumber-preprocessor'
 import { loginPage } from '@pages/LoginPage'
+import '../../support/defineParameterTypes'
 
 Given('A web browser is at the saucelabs login page', () => {
   cy.visit('/')
 })
 
-When('A user enters the username {string}, the password {string}, and clicks on the login button', (username, password) => {
-  loginPage.submitLogin(username, password)
+When('A user logins as "{user}"', (user) => {
+  loginPage.submitLogin(user.username, user.password)
 })
 
 When('A user provides incorrect credentials, and clicks on the login button', (table) => {
