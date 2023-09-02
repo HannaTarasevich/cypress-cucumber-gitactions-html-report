@@ -18,14 +18,10 @@ Feature: Login page
 
     @TC-3
     Scenario: Incorrect Username Login
-        When A user provides incorrect credentials, and clicks on the login button
-            | username | password     |
-            | testName | secret_sauce |
+        When A user logins as "standard_user_with_wrong_password"
         Then The error message "Epic sadface: Username and password do not match any user in this service" is displayed
 
     @TC-4
     Scenario: Incorrect Password Login
-        When A user provides incorrect credentials, and clicks on the login button
-            | username      | password     |
-            | standard_user | testPassword |
+        When A user logins as "non_existing_user"
         Then The error message "Epic sadface: Username and password do not match any user in this service" is displayed
