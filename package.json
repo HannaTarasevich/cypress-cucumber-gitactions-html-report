@@ -23,10 +23,11 @@
     "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
     "features:validate": "node ./node_modules/gherkin-lint -c ./.gherkin-lintrc ./cypress/e2e",
     "eslint:validate": "",
-    "eslint:fix": "eslint cypress/. --fix"
+    "eslint:fix": "eslint ./ --fix"
   },
   "pre-commit": [
-    "features:validate", "eslint:fix"
+    "features:validate",
+    "eslint:fix"
   ],
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^18.0.5",
