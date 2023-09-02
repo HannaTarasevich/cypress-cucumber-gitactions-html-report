@@ -24,3 +24,6 @@ reports
 runner-results/
 cypress/parallel-weights.json
 multi-reporter-config.json
+
+# Downloaded items
+downloads
