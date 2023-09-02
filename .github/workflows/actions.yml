@@ -26,6 +26,7 @@ jobs:
       uses: browser-actions/setup-chrome@v1.2.0
       with:
         chrome-version: stable
+    - run: npm run eslint:validate
     - run: npm install
     - run: npm run features:validate
     - run: npm run cypress:execution
