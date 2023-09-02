@@ -19,7 +19,8 @@ jobs:
       name: Use Node.js LTS
     - uses: actions/setup-node@v3
       with:
-        node-version: 'lts'
+        node-version: 'lts/Hydrogen'
+        check-latest: true
         cache: 'npm'
     - name: Setup Chrome
       uses: browser-actions/setup-chrome@v1.2.0
