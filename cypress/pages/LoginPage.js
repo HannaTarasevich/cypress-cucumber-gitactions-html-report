@@ -1,28 +1,28 @@
 class LoginPage {
   elements = {
-    usernameInput: () => cy.get("#user-name"),
-    passwordInput: () => cy.get("#password"),
-    loginBtn: () => cy.get("#login-button"),
-    errorMessage: () => cy.get('h3[data-test="error"]'),
-  };
-
-  typeUsername(username) {
-    this.elements.usernameInput().type(username);
+    usernameInput: () => cy.get('#user-name'),
+    passwordInput: () => cy.get('#password'),
+    loginBtn: () => cy.get('#login-button'),
+    errorMessage: () => cy.get('h3[data-test="error"]')
   }
 
-  typePassword(password) {
-    this.elements.passwordInput().type(password);
+  typeUsername (username) {
+    this.elements.usernameInput().type(username)
   }
 
-  clickLogin() {
-    this.elements.loginBtn().click();
+  typePassword (password) {
+    this.elements.passwordInput().type(password)
   }
 
-  submitLogin(username,password){
-    this.elements.usernameInput().type(username);
-    this.elements.passwordInput().type(password);
-    this.elements.loginBtn().click();
+  clickLogin () {
+    this.elements.loginBtn().click()
+  }
+
+  submitLogin (username, password) {
+    this.elements.usernameInput().type(username)
+    this.elements.passwordInput().type(password)
+    this.elements.loginBtn().click()
   }
 }
 
-export const loginPage = new LoginPage();
+export const loginPage = new LoginPage()
