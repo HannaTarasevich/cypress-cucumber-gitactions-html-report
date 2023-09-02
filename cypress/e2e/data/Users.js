@@ -1,6 +1,4 @@
-import crypto from 'crypto'
-
-const generateRandomString = (length) => crypto.randomBytes(length).toString('hex')
+import { helpers } from '@helpers'
 
 const Users = {
   standard_user: {
@@ -20,12 +18,12 @@ const Users = {
     password: 'secret_sauce'
   },
   standard_user_with_wrong_password: {
-    username: this.standard_user.username,
-    password: generateRandomString(10)
+    username: 'standard_user',
+    password: helpers.getRandomString(10)
   },
   non_existing_user: {
-    username: generateRandomString(10),
-    password: generateRandomString(10)
+    username: helpers.getRandomString(10),
+    password: helpers.getRandomString(10)
   }
 }
 

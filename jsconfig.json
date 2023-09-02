@@ -7,6 +7,9 @@
             ],
             "@data/*": [
                 "./cypress/e2e/data/*"
+            ],
+            "@helpers": [
+                "./cypress/support/helpers"
             ]
         }
     }
