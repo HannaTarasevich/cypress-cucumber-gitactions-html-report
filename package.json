@@ -22,7 +22,7 @@
     "allure:report": "allure generate allure-results --clean -o allure-report",
     "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true",
     "features:validate": "node ./node_modules/gherkin-lint -c ./.gherkin-lintrc ./cypress/e2e",
-    "eslint:validate": "",
+    "eslint:validate": "eslint ./",
     "eslint:fix": "eslint ./ --fix"
   },
   "pre-commit": [
