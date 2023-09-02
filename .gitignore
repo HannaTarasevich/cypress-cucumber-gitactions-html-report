@@ -20,10 +20,6 @@ videos
 # Cucumber Report
 reports
 
-# Allure Report
-allure-results
-allure-report
-
 # Parallel run artifacts
 runner-results/
 cypress/parallel-weights.json
