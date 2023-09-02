@@ -17,3 +17,11 @@ defineParameterType({
     return urls[path]
   }
 })
+
+defineParameterType({
+  regexp: /[^"]*/,
+  name: 'text',
+  transformer: (string) => {
+    return string
+  }
+})

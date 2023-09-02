@@ -18,7 +18,7 @@ screenshots
 videos
 
 # Cucumber Report
-reports
+cypress/report
 
 # Parallel run artifacts
 runner-results/

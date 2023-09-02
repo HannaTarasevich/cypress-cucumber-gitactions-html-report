@@ -1,15 +1,14 @@
 class ProductsPage {
   elements = {
-    usernameInput: () => cy.get('#user-name'),
-    passwordInput: () => cy.get('#password'),
-    loginBtn: () => cy.get('#login-button'),
-    errorMessage: () => cy.get('h3[data-test="error"]')
+    productItemTitle: () => cy.get('.inventory_item_name'),
+    productItemDescription: () => cy.get('.inventory_item_desc'),
+    productItemImg: () => cy.get('.inventory_item_img img'),
+    productItemPrice: () => cy.get('.inventory_item_price'),
+    addToCartBtn: () => cy.get('.pricebar .btn_primary')
   }
 
-  submitLogin (username, password) {
-    this.elements.usernameInput().type(username)
-    this.elements.passwordInput().type(password)
-    this.elements.loginBtn().click()
+  addToCartByItemNumber (itemNumber) {
+    this.elements.addToCartBtn().eq(itemNumber).click()
   }
 }
 

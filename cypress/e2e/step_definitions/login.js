@@ -2,7 +2,7 @@ import {
   When,
   Then
 } from '@badeball/cypress-cucumber-preprocessor'
-import { loginPage } from '../pages/LoginPage'
+import { loginPage } from '@pages/LoginPage'
 import '../../support/defineParameterTypes'
 
 When('A user logins as "{user}"', (user) => {
