@@ -23,3 +23,8 @@ reports
 # Allure Report
 allure-results
 allure-report
+
+# Parallel run artifacts
+runner-results/
+cypress/parallel-weights.json
+multi-reporter-config.json
