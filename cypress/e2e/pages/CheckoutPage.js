@@ -14,10 +14,18 @@ class CheckoutPage {
     finishBtn: () => cy.get('#finish'),
     countField: () => cy.get('.cart_quantity'),
     cancelBtn: () => cy.get('#cancel'),
-    continueBtn: () => cy.get('#continue')
+    continueBtn: () => cy.get('#continue'),
+    summaryLabels: () => cy.get('.summary_info_label'),
+    paymentAndShipmentInfo: () => cy.get('.summary_value_label'),
+    itemPriceSummary: () => cy.get('.summary_subtotal_label'),
+    taxSummary: () => cy.get('.summary_tax_label'),
+    completedOrderImg: () => cy.get('img.pony_express'),
+    completedOrderThankYouMessage: () => cy.get('.complete-header'),
+    completedOrderInfoMessage: () => cy.get('.complete-text'),
+    completedOrderBackHomeBtn: () => cy.get('#back-to-products')
   }
 
-  clickOnBtn (button = 'continue shopping' || 'continue' || 'cancel' || 'checkout' || 'finish') {
+  clickOnBtn (button = 'continue shopping' || 'continue' || 'cancel' || 'checkout' || 'finish' || 'back home') {
     switch (button) {
       case 'checkout':
         this.elements.checkoutBtn().click()
@@ -33,6 +41,9 @@ class CheckoutPage {
         break
       case 'finish':
         this.elements.finishBtn().click()
+        break
+      case 'back home':
+        this.elements.completedOrderBackHomeBtn().click()
         break
       default:
         throw new Error(`Button type ${button} is not added to the list of the checkout page locators`)
