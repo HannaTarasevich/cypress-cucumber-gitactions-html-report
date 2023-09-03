@@ -1,8 +1,6 @@
 @smoke
 Feature: Login page
 
-    Feature Login page will work depending on the user credentials.
-
     Background:
         Given A web browser is at the "login_page"
 
