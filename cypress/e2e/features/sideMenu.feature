@@ -40,3 +40,11 @@ Feature: Side menu
         When A user clicks on Burger Menu
         Then A user clicks on All Items option in the Burger Menu
             And The url contains the "products_page" subdirectory
+
+    @TC-11
+    Scenario: Side menu - Close
+        When A user logins as "standard_user"
+        Then The url contains the "products_page" subdirectory
+        When A user clicks on Burger Menu
+            And A user clicks on Close option in the Burger Menu
+        Then The Burger Menu is not displayed

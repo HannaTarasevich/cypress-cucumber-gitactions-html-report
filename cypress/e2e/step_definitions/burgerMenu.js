@@ -15,3 +15,7 @@ Then('The Burger Menu is displayed with all options and close icon', () => {
   burgerMenu.elements.logoutOption().should('be.visible')
   burgerMenu.elements.closeIcon().should('be.visible')
 })
+
+Then('The Burger Menu is not displayed', () => {
+  burgerMenu.elements.menuArea().should('not.be.visible')
+})
