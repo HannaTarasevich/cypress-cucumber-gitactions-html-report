@@ -1,9 +1,6 @@
 
 ![cypress-cucumber-gitactions-html-report](https://socialify.git.ci/HannaTarasevich/cypress-cucumber-gitactions-html-report/image?description=1&descriptionEditable=Cypress%2013%2B%20with%20Cucumber%2C%20GitHub%20actions%20workflow%20and%20possibility%20to%20run%20tests%20in%20parallel%20and%20generate%20HTML%20report&language=1&name=1&owner=1&theme=Light)
 
-
-
-
 ## Pre-requisites
 
 - Install Node.js ([LTS](https://nodejs.org/en))
@@ -70,6 +67,30 @@ The repository can be forked as well.
     │   └── support              # Files for supporting automation tests
     └── ...
 
+## Pre-commit hooks 
+
+To make a commit to the project, `eslint` and `gherkin-lint` syntax checks need to be passed. Otherwise, commit fails with listed errors in the console.
+
+Rules can be found in `.eslintrc.json` and `.gherkin-lintrc` files.
+
+
+## GitHub Actions workflow
+There is `github/workflows` folder with `actions.yml` file. 
+The workflow is setup to be run for each Pull request to master, or any push to master.
+It triggers the following steps:
+
+    1. Use Node.js LTS
+    2. Use stable Chrome
+    3. Install dependencies: npm Install
+    4. Check JavaScript syntax by eslint
+    5. Check Gherkin syntax by gherkin-lint
+    6. Run Cypress tests in parallel: npm run cypress:parallel
+
+The result can be found on `Actions` tab of the repository.
+
+
+
+
 ## License
 
 - [ISC](https://choosealicense.com/licenses/isc/)
@@ -78,4 +99,3 @@ The repository can be forked as well.
 ## Useful links:
 
  - [Cypress documentation](https://docs.cypress.io/guides/overview/why-cypress)
-
