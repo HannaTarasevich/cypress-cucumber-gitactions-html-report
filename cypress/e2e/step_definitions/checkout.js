@@ -23,3 +23,7 @@ Then('The count of displayed products is {int} in the checkout list', (int) => {
   checkoutPage.elements.productItemDescription().should('have.length', int)
   checkoutPage.elements.productItemPrice().should('have.length', int)
 })
+
+Then('The remove button is displayed on the checkout page', (text) => {
+  checkoutPage.elements.removeBtn().should('be.visible')
+})

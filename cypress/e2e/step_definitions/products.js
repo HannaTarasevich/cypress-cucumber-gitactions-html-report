@@ -16,3 +16,14 @@ Then('The count of displayed products is {int} in the product list', (int) => {
   productsPage.elements.productItemPrice().should('have.length', int)
   productsPage.elements.addToCartBtn().should('have.length', int)
 })
+
+Then('The page title "{text}" is displayed', (text) => {
+  productsPage.elements.pageTitle().should('have.text', text)
+})
+
+Then('The remove button is displayed on the products page', (text) => {
+  productsPage.elements.removeBtn().should('be.visible')
+})
+Then('The sorting dropdown is displayed', (text) => {
+  productsPage.elements.sortDropdown().should('be.visible')
+})

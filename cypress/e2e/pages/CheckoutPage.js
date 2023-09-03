@@ -3,6 +3,8 @@ import { productsPage } from '@pages/ProductsPage'
 class CheckoutPage {
   elements = {
     checkoutBtn: () => cy.get('#checkout'),
+    continueShoppingBtn: () => cy.get('#continue-shopping'),
+    removeBtn: () => cy.get('.cart_button'),
     productItemTitle: () => productsPage.elements.productItemTitle(),
     productItemDescription: () => productsPage.elements.productItemDescription(),
     productItemPrice: () => productsPage.elements.productItemPrice(),
@@ -10,7 +12,9 @@ class CheckoutPage {
     lastNameInput: () => cy.get('#last-name'),
     zipCodeInput: () => cy.get('#postal-code'),
     continueBtn: () => cy.get('#continue'),
-    finishBtn: () => cy.get('#finish')
+    finishBtn: () => cy.get('#finish'),
+    countField: () => cy.get('.cart_quantity')
+
   }
 
   clickOnBtn (button = 'continue' || 'checkout' || 'finish') {

@@ -10,3 +10,8 @@ When('A user clicks on Cart', () => {
 Then('The shopping cart counter is displayed as {int}', (int) => {
   headerPage.elements.shoppingCartCount().should('have.text', int)
 })
+
+Then('The header is displayed with Logo and Burger Menu Icon', () => {
+  headerPage.elements.burgerMenuIcon().should('be.visible')
+  headerPage.elements.logoText().should('include.text', 'Swag Labs')
+})
