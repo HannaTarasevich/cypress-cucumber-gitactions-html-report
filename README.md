@@ -75,8 +75,9 @@ Rules can be found in `.eslintrc.json` and `.gherkin-lintrc` files.
 
 
 ## GitHub Actions workflow
-There is `github/workflows` folder with `actions.yml` file. 
-The workflow is setup to be run for each Pull request to master, or any push to master.
+GitHub Actions workflow goal is to check whether incoming changes corresponds eslint and gherkin-lint rules, check if tests are passed. 
+The workflow is setup to be run for each Pull Request to the main branch, or any push to the main directly.
+It is described in `github/workflows` folder in `actions.yml` file. 
 It triggers the following steps:
 
     1. Use Node.js LTS
