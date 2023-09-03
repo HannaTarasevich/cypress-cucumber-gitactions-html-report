@@ -21,7 +21,7 @@
     "features:validate": "node ./node_modules/gherkin-lint -c ./.gherkin-lintrc ./cypress/e2e",
     "eslint:validate": "eslint ./",
     "eslint:fix": "eslint ./ --fix",
-    "report:generate": "node cucumber-html-report.js"
+    "report:generate": "node cypress/support/cucumber-html-report.js"
   },
   "pre-commit": [
     "features:validate",
