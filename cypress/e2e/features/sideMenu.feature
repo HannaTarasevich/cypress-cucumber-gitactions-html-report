@@ -40,3 +40,9 @@ Feature: Side menu
         When A user clicks on Burger Menu
             And A user clicks on Close option in the Burger Menu
         Then The Burger Menu is not displayed
+
+    @TC-16
+    Scenario: Side menu - About
+        When A user clicks on Burger Menu
+            And A user clicks on About option in the Burger Menu
+        Then The url contains the "about_link" subdirectory

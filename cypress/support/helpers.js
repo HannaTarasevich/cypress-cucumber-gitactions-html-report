@@ -1,10 +1,10 @@
 const Helpers = {
   /**
-     * Returns random string with the specified length from the set of characters.
-     *
-     * @param length - string length
-     * @returns {string} string
-     */
+   * Returns random string with the specified length from the set of characters.
+   *
+   * @param length - string length
+   * @returns {string} string
+   */
   getRandomString: function (length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     let result = ''
@@ -46,6 +46,27 @@ const Helpers = {
     }
 
     return array
+  },
+
+  disableLoadErrorForRedirect: function () {
+    cy.window().then(win => {
+      const triggerAutIframeLoad = () => {
+        const AUT_IFRAME_SELECTOR = '.aut-iframe'
+
+        // get the application iframe
+        const autIframe = win.parent.document.querySelector(AUT_IFRAME_SELECTOR)
+
+        if (!autIframe) {
+          throw new ReferenceError(`Failed to get the application frame using the selector '${AUT_IFRAME_SELECTOR}'`)
+        }
+
+        autIframe.dispatchEvent(new Event('load'))
+        // remove the event listener to prevent it from firing the load event before each next unload (basically before each successive test)
+        win.removeEventListener('beforeunload', triggerAutIframeLoad)
+      }
+
+      win.addEventListener('beforeunload', triggerAutIframeLoad)
+    })
   }
 }
 

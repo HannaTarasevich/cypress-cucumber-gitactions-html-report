@@ -1,8 +1,10 @@
+import { helpers } from '@helpers'
+
 class BurgerMenu {
   elements = {
     menuArea: () => cy.get('.bm-menu'),
     allItemsOption: () => cy.get('#inventory_sidebar_link'),
-    aboutOption: () => cy.get('[href=\'https://saucelabs.com/\']'),
+    aboutOption: () => cy.get('#about_sidebar_link'),
     logoutOption: () => cy.get('#logout_sidebar_link'),
     resetAppState: () => cy.get('#reset_sidebar_link'),
     closeIcon: () => cy.get('#react-burger-cross-btn')
@@ -14,6 +16,7 @@ class BurgerMenu {
         this.elements.allItemsOption().click()
         break
       case 'about':
+        helpers.disableLoadErrorForRedirect()
         this.elements.aboutOption().click()
         break
       case 'logout':
