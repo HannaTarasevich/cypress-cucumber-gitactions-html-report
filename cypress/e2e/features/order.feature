@@ -15,7 +15,7 @@ Feature: Make order
             And The footer is displayed with Twitter, LinkedIn, Facebook icons and text info
         When A user clicks on 1 "Add to Cart" button
         Then The remove button is displayed on the products page
-            And The shopping cart counter is displayed as 1
+            And The shopping cart counter is "1" item
         When A user clicks on Cart
         Then The url contains the "cart_page" subdirectory
             And The page title "Your Cart" is displayed
@@ -61,7 +61,7 @@ Feature: Make order
             And A user clicks on Cart
             And A user clicks on "Continue shopping" button on checkout page
         Then The url contains the "products_page" subdirectory
-            And The shopping cart counter is displayed as 1
+            And The shopping cart counter is "1" item
 
     @TC-14
     Scenario: Click Cancel on Checkout - Your Information page
@@ -70,7 +70,7 @@ Feature: Make order
             And A user clicks on "Checkout" button on checkout page
             And A user clicks on "Cancel" button on checkout page
         Then The url contains the "cart_page" subdirectory
-            And The shopping cart counter is displayed as 1
+            And The shopping cart counter is "1" item
 
     @TC-15
     Scenario: Click Cancel on Checkout - Overview page
@@ -83,4 +83,4 @@ Feature: Make order
             And A user clicks on "Continue" button on checkout page
             And A user clicks on "Cancel" button on checkout page
         Then The url contains the "products_page" subdirectory
-            And The shopping cart counter is displayed as 1
+            And The shopping cart counter is "1" item

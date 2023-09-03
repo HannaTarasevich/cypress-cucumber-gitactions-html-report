@@ -4,6 +4,7 @@ import {
 } from '@badeball/cypress-cucumber-preprocessor'
 import { loginPage } from '@pages/LoginPage'
 import '../../support/defineParameterTypes'
+import { helpers } from '@helpers'
 
 /**
  * Login with specified user.
@@ -24,9 +25,11 @@ When('A user logins as "{user}"', (user) => {
  * Then The login error message Error is displayed
  *
  * @param errorMessage - string
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('The login error message {string} is displayed', (errorMessage) => {
-  loginPage.elements.errorMessage().should('have.text', errorMessage)
+Then('The login error message {string} is {elementCondition}', (errorMessage, elementCondition) => {
+  helpers.verifyElementCondition(loginPage.elements.errorMessage(), elementCondition)
+  helpers.verifyText(loginPage.elements.errorMessage(), errorMessage)
 })
 
 /**
@@ -36,7 +39,7 @@ Then('The login error message {string} is displayed', (errorMessage) => {
  * Then The login page is displayed
  *
  */
-Then('The login page is displayed', (errorMessage) => {
-  loginPage.elements.usernameInput().should('be.visible')
-  loginPage.elements.passwordInput().should('be.visible')
+Then('The login page is {elementCondition}', (elementCondition) => {
+  helpers.verifyElementCondition(loginPage.elements.usernameInput(), elementCondition)
+  helpers.verifyElementCondition(loginPage.elements.passwordInput(), elementCondition)
 })

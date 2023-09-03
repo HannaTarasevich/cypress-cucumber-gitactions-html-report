@@ -48,6 +48,10 @@ const Helpers = {
     return array
   },
 
+  /**
+   * Workaround to handle redirect after click on link
+   *
+   */
   disableLoadErrorForRedirect: function () {
     cy.window().then(win => {
       const triggerAutIframeLoad = () => {
@@ -67,6 +71,47 @@ const Helpers = {
 
       win.addEventListener('beforeunload', triggerAutIframeLoad)
     })
+  },
+
+  /**
+   * Verify element condition
+   *
+   * @param elem - Cypress element to get
+   * @param elementCondition - displayed, not displayed, not existing
+   */
+  verifyElementCondition: function (elem, elementCondition) {
+    const supportedElementConditions = ['displayed', 'not displayed', 'not existing']
+    switch (elementCondition) {
+      case 'displayed':
+        return elem.should('be.visible')
+      case 'not displayed':
+        return elem.should('not.be.visible')
+      case 'not existing':
+        return elem.should('not.exist')
+
+      default:
+        throw new Error(`Element condition: '${elementCondition}' is not supported. Only the following element conditions are supported: ${supportedElementConditions.join(', ')}`)
+    }
+  },
+
+  /**
+   * Verify count of elements
+   *
+   * @param elem - Cypress element to get
+   * @param count - integer
+   */
+  verifyCount: function (elem, count) {
+    return elem.should('have.length', count)
+  },
+
+  /**
+   * Verify text of elements
+   *
+   * @param elem - Cypress element to get
+   * @param text - expected text
+   */
+  verifyText: function (elem, text) {
+    return elem.should('contain.text', text)
   }
 }
 

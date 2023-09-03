@@ -3,6 +3,7 @@ import {
 } from '@badeball/cypress-cucumber-preprocessor'
 import '../../support/defineParameterTypes'
 import { burgerMenu } from '@pages/BurgerMenuPage'
+import { helpers } from '@helpers'
 
 /**
  * Click on option in Burger menu.
@@ -22,23 +23,13 @@ When('A user clicks on {text} option in the Burger Menu', (text) => {
  * EXAMPLES:
  * Then The Burger Menu is displayed with all options and close icon
  *
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('The Burger Menu is displayed with all options and close icon', () => {
-  burgerMenu.elements.menuArea().should('be.visible')
-  burgerMenu.elements.aboutOption().should('be.visible')
-  burgerMenu.elements.resetAppState().should('be.visible')
-  burgerMenu.elements.allItemsOption().should('be.visible')
-  burgerMenu.elements.logoutOption().should('be.visible')
-  burgerMenu.elements.closeIcon().should('be.visible')
-})
-
-/**
- * Check if Burger menu is not displayed.
- *
- * EXAMPLES:
- * Then The Burger Menu is not displayed
- *
- */
-Then('The Burger Menu is not displayed', () => {
-  burgerMenu.elements.menuArea().should('not.be.visible')
+Then('The Burger Menu is {elementCondition} with all options and close icon', (elementCondition) => {
+  helpers.verifyElementCondition(burgerMenu.elements.menuArea(), elementCondition)
+  helpers.verifyElementCondition(burgerMenu.elements.aboutOption(), elementCondition)
+  helpers.verifyElementCondition(burgerMenu.elements.resetAppState(), elementCondition)
+  helpers.verifyElementCondition(burgerMenu.elements.allItemsOption(), elementCondition)
+  helpers.verifyElementCondition(burgerMenu.elements.logoutOption(), elementCondition)
+  helpers.verifyElementCondition(burgerMenu.elements.closeIcon(), elementCondition)
 })

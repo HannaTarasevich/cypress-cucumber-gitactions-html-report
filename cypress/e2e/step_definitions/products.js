@@ -19,7 +19,7 @@ When('A user clicks on {int} "Add to Cart" button', (int) => {
 })
 
 /**
- * Check count of items in Product List.
+ * Select sort option.
  *
  * EXAMPLES:
  * When A user clicks on Sort Option Name (A to Z)
@@ -39,11 +39,11 @@ When('A user clicks on Sort Option {text}', (option) => {
  * @param int - integer
  */
 Then('The count of displayed products is {int} in the product list', (int) => {
-  productsPage.elements.productItemTitle().should('have.length', int)
-  productsPage.elements.productItemDescription().should('have.length', int)
-  productsPage.elements.productItemImg().should('have.length', int)
-  productsPage.elements.productItemPrice().should('have.length', int)
-  productsPage.elements.addToCartBtn().should('have.length', int)
+  helpers.verifyCount(productsPage.elements.productItemTitle(), int)
+  helpers.verifyCount(productsPage.elements.productItemDescription(), int)
+  helpers.verifyCount(productsPage.elements.productItemImg(), int)
+  helpers.verifyCount(productsPage.elements.productItemPrice(), int)
+  helpers.verifyCount(productsPage.elements.addToCartBtn(), int)
 })
 
 /**
@@ -75,9 +75,11 @@ Then('Products are sorted "{text}" in "{text}" order', (alphabeticallyOrNumerica
  * EXAMPLES:
  * The remove button is displayed on the products page
  *
+ * @param elementCondition - displayed, not displayed, not existing
+ *
  */
-Then('The remove button is displayed on the products page', (text) => {
-  productsPage.elements.removeBtn().should('be.visible')
+Then('The remove button is {elementCondition} on the products page', (elementCondition) => {
+  helpers.verifyElementCondition(productsPage.elements.removeBtn(), elementCondition)
 })
 
 /**
@@ -86,7 +88,8 @@ Then('The remove button is displayed on the products page', (text) => {
  * EXAMPLES:
  * The sorting dropdown is displayed
  *
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('The sorting dropdown is displayed', (text) => {
-  productsPage.elements.sortDropdown().should('be.visible')
+Then('The sorting dropdown is {elementCondition}', (elementCondition) => {
+  helpers.verifyElementCondition(productsPage.elements.sortDropdown(), elementCondition)
 })

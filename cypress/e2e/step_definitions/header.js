@@ -3,6 +3,7 @@ import {
 } from '@badeball/cypress-cucumber-preprocessor'
 import '../../support/defineParameterTypes'
 import { headerPage } from '@pages/HeaderPage'
+import { helpers } from '@helpers'
 
 When('A user clicks on Cart', () => {
   headerPage.goToCart()
@@ -22,23 +23,24 @@ When('A user clicks on Burger Menu', () => {
  * Check the count near Shopping Cart.
  *
  * EXAMPLES:
- * Then The shopping cart counter is displayed as 2
+ * Then The shopping cart counter is displayed
  *
  * @param int - integer
  */
-Then('The shopping cart counter is displayed as {int}', (int) => {
-  headerPage.elements.shoppingCartCount().should('have.text', int)
+Then('The shopping cart counter is {elementCondition}', (elementCondition) => {
+  helpers.verifyElementCondition(headerPage.elements.shoppingCartCount(), elementCondition)
 })
 
 /**
- * Check if shopping cart counter is not displayed.
+ * Check if shopping cart counter.
  *
  * EXAMPLES:
- * Then The shopping cart counter is not displayed
+ * Then The shopping cart counter is "2"
  *
+ * @param count - integer
  */
-Then('The shopping cart counter is not displayed', () => {
-  headerPage.elements.shoppingCartCount().should('not.exist')
+Then('The shopping cart counter is "{int}" item(s)', (count) => {
+  helpers.verifyCount(headerPage.elements.shoppingCartCount(), count)
 })
 
 /**
@@ -47,9 +49,11 @@ Then('The shopping cart counter is not displayed', () => {
  * EXAMPLES:
  * Then The header is displayed with Logo, Cart and Burger Menu Icon
  *
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('The header is displayed with Logo, Cart and Burger Menu Icon', () => {
-  headerPage.elements.burgerMenuIcon().should('be.visible')
-  headerPage.elements.logoText().should('include.text', 'Swag Labs')
-  headerPage.elements.shoppingCartLink().should('be.visible')
+Then('The header is {elementCondition} with Logo, Cart and Burger Menu Icon', (elementCondition) => {
+  helpers.verifyElementCondition(headerPage.elements.burgerMenuIcon(), elementCondition)
+  helpers.verifyElementCondition(headerPage.elements.logoText(), elementCondition)
+  helpers.verifyText(headerPage.elements.logoText(), 'Swag Labs')
+  helpers.verifyElementCondition(headerPage.elements.shoppingCartLink(), elementCondition)
 })

@@ -21,10 +21,10 @@ Feature: Side menu
     Scenario: Side menu - Reset App State
         When A user clicks on 1 "Add to Cart" button
         Then The remove button is displayed on the products page
-            And The shopping cart counter is displayed as 1
+            And The shopping cart counter is "1" item
         When A user clicks on Burger Menu
         Then A user clicks on Reset App State option in the Burger Menu
-            And The shopping cart counter is not displayed
+            And The shopping cart counter is not existing
 
     @TC-10
     Scenario: Side menu - All Items option
@@ -39,7 +39,7 @@ Feature: Side menu
     Scenario: Side menu - Close
         When A user clicks on Burger Menu
             And A user clicks on Close option in the Burger Menu
-        Then The Burger Menu is not displayed
+        Then The Burger Menu is not displayed with all options and close icon
 
     @TC-16
     Scenario: Side menu - About

@@ -4,6 +4,7 @@ import {
 } from '@badeball/cypress-cucumber-preprocessor'
 import { checkoutPage } from '@pages/CheckoutPage'
 import '../../support/defineParameterTypes'
+import { helpers } from '@helpers'
 
 /**
  * Click on button on Checkout page.
@@ -45,10 +46,10 @@ When('A user enters Checkout data:', (table) => {
  * @param int - integer
  */
 Then('The count of displayed products is {int} in the checkout list', (int) => {
-  checkoutPage.elements.productItemTitle().should('have.length', int)
-  checkoutPage.elements.productItemDescription().should('have.length', int)
-  checkoutPage.elements.productItemPrice().should('have.length', int)
-  checkoutPage.elements.countField().should('contain.text', int)
+  helpers.verifyCount(checkoutPage.elements.productItemTitle(), int)
+  helpers.verifyCount(checkoutPage.elements.productItemDescription(), int)
+  helpers.verifyCount(checkoutPage.elements.productItemPrice(), int)
+  helpers.verifyCount(checkoutPage.elements.countField(), int)
 })
 
 /**
@@ -66,9 +67,9 @@ Then('The added product is displayed with the details:', (table) => {
     cy.log(row.title)
     cy.log(row.description)
     cy.log(row.price)
-    checkoutPage.elements.productItemTitle().should('contain.text', row.title)
-    checkoutPage.elements.productItemDescription().should('contain.text', row.description)
-    checkoutPage.elements.productItemPrice().should('contain.text', row.price)
+    helpers.verifyText(checkoutPage.elements.productItemTitle(), row.title)
+    helpers.verifyText(checkoutPage.elements.productItemDescription(), row.description)
+    helpers.verifyText(checkoutPage.elements.productItemPrice(), row.price)
   })
 })
 
@@ -79,10 +80,10 @@ Then('The added product is displayed with the details:', (table) => {
  * Then The summary checkout labels are displayed
  */
 Then('The summary checkout labels are displayed', () => {
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Payment Information')
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Shipping Information')
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Price Total')
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Total:')
+  helpers.verifyText(checkoutPage.elements.summaryLabels(), 'Payment Information')
+  helpers.verifyText(checkoutPage.elements.summaryLabels(), 'Shipping Information')
+  helpers.verifyText(checkoutPage.elements.summaryLabels(), 'Price Total')
+  helpers.verifyText(checkoutPage.elements.summaryLabels(), 'Total:')
 })
 
 /**
@@ -95,15 +96,11 @@ Then('The summary checkout labels are displayed', () => {
  * @param tax - number
  */
 Then('The order checkout summary data is displayed with price "{text}" and tax "{text}"', (price, tax) => {
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Payment Information')
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Shipping Information')
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Price Total')
-  checkoutPage.elements.summaryLabels().should('contain.text', 'Total:')
-  checkoutPage.elements.paymentAndShipmentInfo().should('contain.text', 'SauceCard #31337')
-  checkoutPage.elements.paymentAndShipmentInfo().should('contain.text', 'Free Pony Express Delivery!')
-  checkoutPage.elements.itemPriceSummary().should('contain.text', price)
-  checkoutPage.elements.taxSummary().should('contain.text', tax)
-  checkoutPage.elements.summaryLabels().should('contain.text', (+price + +tax).toFixed(2))
+  helpers.verifyText(checkoutPage.elements.paymentAndShipmentInfo(), 'SauceCard #31337')
+  helpers.verifyText(checkoutPage.elements.paymentAndShipmentInfo(), 'Free Pony Express Delivery!')
+  helpers.verifyText(checkoutPage.elements.itemPriceSummary(), price)
+  helpers.verifyText(checkoutPage.elements.taxSummary(), tax)
+  helpers.verifyText(checkoutPage.elements.summaryLabels(), (+price + +tax).toFixed(2))
 })
 
 /**
@@ -111,11 +108,13 @@ Then('The order checkout summary data is displayed with price "{text}" and tax "
  *
  * EXAMPLES:
  * The buttons Remove, Continue shopping and Checkout are displayed on the checkout page
+ *
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('The buttons Remove, Continue shopping and Checkout are displayed on the checkout page', () => {
-  checkoutPage.elements.removeBtn().should('be.visible')
-  checkoutPage.elements.continueShoppingBtn().should('be.visible')
-  checkoutPage.elements.checkoutBtn().should('be.visible')
+Then('The buttons Remove, Continue shopping and Checkout are {elementCondition} on the checkout page', (elementCondition) => {
+  helpers.verifyElementCondition(checkoutPage.elements.removeBtn(), elementCondition)
+  helpers.verifyElementCondition(checkoutPage.elements.continueShoppingBtn(), elementCondition)
+  helpers.verifyElementCondition(checkoutPage.elements.checkoutBtn(), elementCondition)
 })
 
 /**
@@ -123,10 +122,12 @@ Then('The buttons Remove, Continue shopping and Checkout are displayed on the ch
  *
  * EXAMPLES:
  * Then Completed order page is displayed
+ *
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('Completed order page is displayed', () => {
-  checkoutPage.elements.completedOrderImg().should('be.visible')
-  checkoutPage.elements.completedOrderThankYouMessage().should('contain.text', 'Thank you for your order!')
-  checkoutPage.elements.completedOrderInfoMessage().should('contain.text', 'Your order has been dispatched, and will arrive just as fast as the pony can get there!')
-  checkoutPage.elements.completedOrderBackHomeBtn().should('be.visible')
+Then('Completed order page is {elementCondition}', (elementCondition) => {
+  helpers.verifyElementCondition(checkoutPage.elements.completedOrderImg(), elementCondition)
+  helpers.verifyElementCondition(checkoutPage.elements.completedOrderBackHomeBtn(), elementCondition)
+  helpers.verifyText(checkoutPage.elements.completedOrderThankYouMessage(), 'Thank you for your order!')
+  helpers.verifyText(checkoutPage.elements.completedOrderInfoMessage(), 'Your order has been dispatched, and will arrive just as fast as the pony can get there!')
 })

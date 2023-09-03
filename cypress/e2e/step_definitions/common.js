@@ -4,6 +4,7 @@ import {
 } from '@badeball/cypress-cucumber-preprocessor'
 import '../../support/defineParameterTypes'
 import { productsPage } from '@pages/ProductsPage'
+import { helpers } from '@helpers'
 
 /**
  * Open browser with specified path.
@@ -24,9 +25,11 @@ Given('A web browser is at the "{path}"', (path) => {
  * Then The page title "Products" is displayed
  *
  * @param title - string
+ * @param elementCondition - displayed, not displayed, not existing
  */
-Then('The page title "{text}" is displayed', (title) => {
-  productsPage.elements.pageTitle().should('have.text', title)
+Then('The page title "{text}" is {elementCondition}', (title, elementCondition) => {
+  helpers.verifyElementCondition(productsPage.elements.pageTitle(), elementCondition)
+  helpers.verifyText(productsPage.elements.pageTitle(), title)
 })
 
 /**
