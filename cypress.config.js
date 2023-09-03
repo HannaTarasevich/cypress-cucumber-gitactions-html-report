@@ -1,11 +1,16 @@
 const { defineConfig } = require('cypress')
 const createBundler = require('@bahmutov/cypress-esbuild-preprocessor')
-const preprocessor = require('@badeball/cypress-cucumber-preprocessor')
+const {
+  addCucumberPreprocessorPlugin,
+  afterRunHandler
+} = require('@badeball/cypress-cucumber-preprocessor')
 const createEsbuildPlugin = require('@badeball/cypress-cucumber-preprocessor/esbuild')
+const { writeFileSync } = require('fs')
 
-async function setupNodeEvents (on, config) {
-  // This is required for the preprocessor to be able to generate JSON reports after each run, and more,
-  await preprocessor.addCucumberPreprocessorPlugin(on, config)
+const setupNodeEvents = async (on, config) => {
+  await addCucumberPreprocessorPlugin(on, config, {
+    omitAfterRunHandler: true
+  })
 
   on(
     'file:preprocessor',
@@ -13,6 +18,29 @@ async function setupNodeEvents (on, config) {
       plugins: [createEsbuildPlugin.default(config)]
     })
   )
+
+  on('after:run', async (results) => {
+    if (results) {
+      await afterRunHandler(config)
+      writeFileSync(
+        'cypress/reports/results.json',
+        JSON.stringify(
+          {
+            browserName: results.browserName,
+            browserVersion: results.browserVersion,
+            osName: results.osName,
+            osVersion: results.osVersion,
+            nodeVersion: results.config.resolvedNodeVersion,
+            cypressVersion: results.cypressVersion,
+            startedTestsAt: results.startedTestsAt,
+            endedTestsAt: results.endedTestsAt
+          },
+          null,
+          '\t'
+        )
+      )
+    }
+  })
   // Make sure to return the config object as it might have been modified by the plugin.
   return config
 }

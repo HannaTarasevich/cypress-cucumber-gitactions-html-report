@@ -16,11 +16,12 @@
   "scripts": {
     "cypress:run": "cypress run --spec cypress/e2e/features/* --browser chrome",
     "cypress:open": "cypress open --e2e --browser chrome",
-    "cypress:parallel" : "cypress-parallel -s cypress:run -t 2 -d cypress/e2e/features/* -a '\"--browser chrome\"' -m false",
+    "cypress:parallel": "cypress-parallel -s cypress:run -t 4 -d cypress/e2e/features/* -a '\"--browser chrome\"' -m false",
     "cypress:execution-tags": "cypress run --env tags=@smoke",
     "features:validate": "node ./node_modules/gherkin-lint -c ./.gherkin-lintrc ./cypress/e2e",
     "eslint:validate": "eslint ./",
-    "eslint:fix": "eslint ./ --fix"
+    "eslint:fix": "eslint ./ --fix",
+    "report:generate": "node cucumber-html-report.js"
   },
   "pre-commit": [
     "features:validate",
@@ -31,6 +32,7 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
     "cypress": "^13.1.0",
     "cypress-parallel": "^0.13.0",
+    "dayjs": "^1.11.9",
     "esbuild": "^0.19.2",
     "eslint": "^8.48.0",
     "eslint-config-standard": "^17.1.0",
@@ -41,5 +43,17 @@
     "gherkin-lint": "^4.2.2",
     "multiple-cucumber-html-reporter": "^3.4.0",
     "pre-commit": "^1.2.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/e2e/step_definitions/**/*.js",
+    "json": {
+      "enabled": true,
+      "formatter": ".bin/cucumber-json-formatter",
+      "output": "cypress/reports/json/cucumber-report.json"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/messages/cucumber-messages.ndjson"
+    }
   }
 }
