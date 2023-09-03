@@ -11,19 +11,25 @@ class CheckoutPage {
     firstNameInput: () => cy.get('#first-name'),
     lastNameInput: () => cy.get('#last-name'),
     zipCodeInput: () => cy.get('#postal-code'),
-    continueBtn: () => cy.get('#continue'),
     finishBtn: () => cy.get('#finish'),
-    countField: () => cy.get('.cart_quantity')
-
+    countField: () => cy.get('.cart_quantity'),
+    cancelBtn: () => cy.get('#cancel'),
+    continueBtn: () => cy.get('#continue')
   }
 
-  clickOnBtn (button = 'continue' || 'checkout' || 'finish') {
+  clickOnBtn (button = 'continue shopping' || 'continue' || 'cancel' || 'checkout' || 'finish') {
     switch (button) {
       case 'checkout':
         this.elements.checkoutBtn().click()
         break
+      case 'cancel':
+        this.elements.cancelBtn().click()
+        break
       case 'continue':
         this.elements.continueBtn().click()
+        break
+      case 'continue shopping':
+        this.elements.continueShoppingBtn().click()
         break
       case 'finish':
         this.elements.finishBtn().click()

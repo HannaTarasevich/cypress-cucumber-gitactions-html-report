@@ -13,25 +13,32 @@ Feature: Login page
             And The count of displayed products is 6 in the product list
             And The page title "Products" is displayed
             And The sorting dropdown is displayed
-            And The header is displayed with Logo and Burger Menu Icon
-            And The footer is displayed with Twitter,  LinkedIn, Facebook icons and text info
+            And The header is displayed with Logo, Cart and Burger Menu Icon
+            And The footer is displayed with Twitter, LinkedIn, Facebook icons and text info
         When A user clicks on 1 "Add to Cart" button
         Then The remove button is displayed on the products page
             And The shopping cart counter is displayed as 1
         When A user clicks on Cart
         Then The url contains the "cart_page" subdirectory
-               # CHECK TITLE
-            And The header is displayed with Logo and Burger Menu Icon
-            And The footer is displayed with Twitter,  LinkedIn, Facebook icons and text info
+            And The page title "Your Cart" is displayed
+            And The header is displayed with Logo, Cart and Burger Menu Icon
+            And The footer is displayed with Twitter, LinkedIn, Facebook icons and text info
             And The count of displayed products is 1 in the checkout list
-            And The remove button is displayed on the checkout page
+            And The buttons Remove, Continue shopping and Checkout are displayed on the checkout page
         When A user clicks on Checkout button
         Then The url contains the "checkout_page" subdirectory
-
+            And The page title "Checkout: Your Information" is displayed
+            And The footer is displayed with Twitter, LinkedIn, Facebook icons and text info
+            And The header is displayed with Logo, Cart and Burger Menu Icon
         When A user enters Checkout data:
             | firstName | lastName | zipCode |
             | La        | Ka       | 15-206  |
             And A user clicks on Continue button
+        Then The url contains the "checkout_overview" subdirectory
+            And The page title "Checkout: Overview" is displayed
+            And The footer is displayed with Twitter, LinkedIn, Facebook icons and text info
+            And The header is displayed with Logo, Cart and Burger Menu Icon
+            And The count of displayed products is 1 in the checkout list
             And A user clicks on Finish button
 
     @TC-2

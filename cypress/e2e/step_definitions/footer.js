@@ -4,7 +4,7 @@ import {
 import '../../support/defineParameterTypes'
 import { footerPage } from '@pages/FooterPage'
 
-Then('The footer is displayed with Twitter,  LinkedIn, Facebook icons and text info', (text) => {
+Then('The footer is displayed with Twitter, LinkedIn, Facebook icons and text info', (text) => {
   footerPage.elements.linkedinIcon().should('be.visible')
   footerPage.elements.facebookIcon().should('be.visible')
   footerPage.elements.twitterIcon().should('be.visible')

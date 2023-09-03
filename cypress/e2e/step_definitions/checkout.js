@@ -22,8 +22,11 @@ Then('The count of displayed products is {int} in the checkout list', (int) => {
   checkoutPage.elements.productItemTitle().should('have.length', int)
   checkoutPage.elements.productItemDescription().should('have.length', int)
   checkoutPage.elements.productItemPrice().should('have.length', int)
+  checkoutPage.elements.countField().should('contain.text', int)
 })
 
-Then('The remove button is displayed on the checkout page', (text) => {
+Then('The buttons Remove, Continue shopping and Checkout are displayed on the checkout page', () => {
   checkoutPage.elements.removeBtn().should('be.visible')
+  checkoutPage.elements.continueShoppingBtn().should('be.visible')
+  checkoutPage.elements.checkoutBtn().should('be.visible')
 })

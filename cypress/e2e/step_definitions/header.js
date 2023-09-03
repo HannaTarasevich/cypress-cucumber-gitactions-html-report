@@ -11,7 +11,8 @@ Then('The shopping cart counter is displayed as {int}', (int) => {
   headerPage.elements.shoppingCartCount().should('have.text', int)
 })
 
-Then('The header is displayed with Logo and Burger Menu Icon', () => {
+Then('The header is displayed with Logo, Cart and Burger Menu Icon', () => {
   headerPage.elements.burgerMenuIcon().should('be.visible')
   headerPage.elements.logoText().should('include.text', 'Swag Labs')
+  headerPage.elements.shoppingCartLink().should('be.visible')
 })
