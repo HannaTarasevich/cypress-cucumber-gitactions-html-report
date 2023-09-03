@@ -12,3 +12,8 @@ When('A user logins as "{user}"', (user) => {
 Then('The login error message {string} is displayed', (errorMessage) => {
   loginPage.elements.errorMessage().should('have.text', errorMessage)
 })
+
+Then('The login page is displayed', (errorMessage) => {
+  loginPage.elements.usernameInput().should('be.visible')
+  loginPage.elements.passwordInput().should('be.visible')
+})

@@ -9,6 +9,10 @@ class HeaderPage {
   goToCart () {
     this.elements.shoppingCartLink().click()
   }
+
+  openBurgerMenu () {
+    this.elements.burgerMenuIcon().click()
+  }
 }
 
 export const headerPage = new HeaderPage()

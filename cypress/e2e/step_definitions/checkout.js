@@ -5,7 +5,7 @@ import {
 import { checkoutPage } from '@pages/CheckoutPage'
 import '../../support/defineParameterTypes'
 
-When('A user clicks on {text} button', (text) => {
+When('A user clicks on {text} button on checkout page', (text) => {
   checkoutPage.clickOnBtn(text.toLowerCase())
 })
 
