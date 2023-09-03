@@ -16,7 +16,7 @@
   "scripts": {
     "cypress:run": "cypress run --spec cypress/e2e/features/* --browser chrome",
     "cypress:open": "cypress open --e2e --browser chrome",
-    "cypress:parallel": "cypress-parallel -s cypress:run -t 4 -d cypress/e2e/features/* -a '\"--browser chrome\"' -m false",
+    "cypress:parallel": "cypress-parallel -s cypress:run -t 2 -d cypress/e2e/features/* -a '\"--browser chrome\"' -m false",
     "cypress:execution-tags": "cypress run --env tags=@smoke",
     "features:validate": "node ./node_modules/gherkin-lint -c ./.gherkin-lintrc ./cypress/e2e",
     "eslint:validate": "eslint ./",

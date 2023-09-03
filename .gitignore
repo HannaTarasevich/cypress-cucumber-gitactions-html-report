@@ -19,6 +19,7 @@ videos
 
 # Cucumber Report
 cypress/reports
+.bin
 
 # Parallel run artifacts
 runner-results/
