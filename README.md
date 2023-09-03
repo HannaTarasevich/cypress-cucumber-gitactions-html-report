@@ -54,6 +54,8 @@ The repository can be forked as well.
 ```bash
   npm run report:generate
 ```
+![image](https://github.com/HannaTarasevich/cypress-cucumber-githubactions-html-report/assets/79576380/60b1405a-0f05-4039-b148-f460a811d7ce)
+
 ## Project structure
 
     .
