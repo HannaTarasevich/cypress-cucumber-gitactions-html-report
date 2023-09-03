@@ -1,3 +1,5 @@
+// Store users credentials
+
 import { helpers } from '@helpers'
 
 const Users = {

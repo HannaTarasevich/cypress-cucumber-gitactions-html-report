@@ -5,10 +5,28 @@ import {
 import { checkoutPage } from '@pages/CheckoutPage'
 import '../../support/defineParameterTypes'
 
+/**
+ * Click on button on Checkout page.
+ *
+ * EXAMPLES:
+ * When A user clicks on "Cancel" button on checkout page
+ *
+ * @param text - 'continue shopping', 'continue', 'cancel', 'checkout', 'finish', 'back home'
+ */
 When('A user clicks on "{text}" button on checkout page', (text) => {
   checkoutPage.clickOnBtn(text.toLowerCase())
 })
 
+/**
+ * Enter data in Checkout form.
+ *
+ * EXAMPLES:
+ * When A user enters Checkout data:
+ * |firstName|lastName|zipCode|
+ * |x        |y       |15     |
+ *
+ * @param table - headers are firstName, lastName, zipCode
+ */
 When('A user enters Checkout data:', (table) => {
   table.hashes().forEach((row) => {
     cy.log(row.firstName)
@@ -18,6 +36,14 @@ When('A user enters Checkout data:', (table) => {
   })
 })
 
+/**
+ * Check count of items on Checkout page.
+ *
+ * EXAMPLES:
+ * Then The count of displayed products is 2 in the checkout list
+ *
+ * @param int - integer
+ */
 Then('The count of displayed products is {int} in the checkout list', (int) => {
   checkoutPage.elements.productItemTitle().should('have.length', int)
   checkoutPage.elements.productItemDescription().should('have.length', int)
@@ -25,6 +51,16 @@ Then('The count of displayed products is {int} in the checkout list', (int) => {
   checkoutPage.elements.countField().should('contain.text', int)
 })
 
+/**
+ * Check details of the product on checkout page
+ *
+ * EXAMPLES:
+ * Then The added product is displayed with the details:
+ * |title|description|price|
+ * |x    |y          |1    |
+ *
+ * @param table - headers are title, description, price
+ */
 Then('The added product is displayed with the details:', (table) => {
   table.hashes().forEach((row) => {
     cy.log(row.title)
@@ -36,6 +72,12 @@ Then('The added product is displayed with the details:', (table) => {
   })
 })
 
+/**
+ * Check the labels of summary information.
+ *
+ * EXAMPLES:
+ * Then The summary checkout labels are displayed
+ */
 Then('The summary checkout labels are displayed', () => {
   checkoutPage.elements.summaryLabels().should('contain.text', 'Payment Information')
   checkoutPage.elements.summaryLabels().should('contain.text', 'Shipping Information')
@@ -43,6 +85,15 @@ Then('The summary checkout labels are displayed', () => {
   checkoutPage.elements.summaryLabels().should('contain.text', 'Total:')
 })
 
+/**
+ * Click on button on Checkout page.
+ *
+ * EXAMPLES:
+ * Then The order checkout summary data is displayed with price "10" and tax "0.8"
+ *
+ * @param price - number
+ * @param tax - number
+ */
 Then('The order checkout summary data is displayed with price "{text}" and tax "{text}"', (price, tax) => {
   checkoutPage.elements.summaryLabels().should('contain.text', 'Payment Information')
   checkoutPage.elements.summaryLabels().should('contain.text', 'Shipping Information')
@@ -55,12 +106,24 @@ Then('The order checkout summary data is displayed with price "{text}" and tax "
   checkoutPage.elements.summaryLabels().should('contain.text', (+price + +tax).toFixed(2))
 })
 
+/**
+ * Check the buttons on Checkout Page.
+ *
+ * EXAMPLES:
+ * The buttons Remove, Continue shopping and Checkout are displayed on the checkout page
+ */
 Then('The buttons Remove, Continue shopping and Checkout are displayed on the checkout page', () => {
   checkoutPage.elements.removeBtn().should('be.visible')
   checkoutPage.elements.continueShoppingBtn().should('be.visible')
   checkoutPage.elements.checkoutBtn().should('be.visible')
 })
 
+/**
+ * Check if Completed order page is displayed with expected attributes.
+ *
+ * EXAMPLES:
+ * Then Completed order page is displayed
+ */
 Then('Completed order page is displayed', () => {
   checkoutPage.elements.completedOrderImg().should('be.visible')
   checkoutPage.elements.completedOrderThankYouMessage().should('contain.text', 'Thank you for your order!')

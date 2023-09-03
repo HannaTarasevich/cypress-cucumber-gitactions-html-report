@@ -1,3 +1,5 @@
+// Contains all URLs that can be used in test scenarios
+
 const Urls = {
   login_page: '/',
   products_page: '/inventory.html',

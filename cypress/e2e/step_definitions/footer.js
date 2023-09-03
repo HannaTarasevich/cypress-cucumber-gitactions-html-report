@@ -4,6 +4,13 @@ import {
 import '../../support/defineParameterTypes'
 import { footerPage } from '@pages/FooterPage'
 
+/**
+ * Check if footer is displayed.
+ *
+ * EXAMPLES:
+ * Then The footer is displayed with Twitter, LinkedIn, Facebook icons and text info
+ *
+ */
 Then('The footer is displayed with Twitter, LinkedIn, Facebook icons and text info', (text) => {
   footerPage.elements.linkedinIcon().should('be.visible')
   footerPage.elements.facebookIcon().should('be.visible')
