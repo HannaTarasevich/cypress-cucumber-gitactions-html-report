@@ -7,12 +7,15 @@ class ProductsPage {
     addToCartBtn: () => cy.get('.pricebar .btn_primary'),
     removeBtn: () => cy.get('.btn_secondary'),
     pageTitle: () => cy.get('.title'),
-    sortDropdown: () => cy.get('.product_sort_container'),
-    sortDropdownValues: () => cy.get('option[value]')
+    sortDropdown: () => cy.get('.product_sort_container')
   }
 
   addToCartByItemNumber (itemNumber) {
     this.elements.addToCartBtn().eq(itemNumber).click()
+  }
+
+  selectSortOption (option = 'Name (A to Z)' || 'Name (Z to A)' || 'Price (low to high)' || 'Price (high to low') {
+    this.elements.sortDropdown().select(option)
   }
 }
 

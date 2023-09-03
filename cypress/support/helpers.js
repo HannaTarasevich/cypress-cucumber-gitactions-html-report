@@ -12,6 +12,40 @@ const Helpers = {
       result += chars.charAt(Math.floor(Math.random() * chars.length))
     }
     return result
+  },
+
+  /**
+   * Sorting array alphabetically or numerically in ascending or descending order case insensitive by default
+   *
+   * @param array - that need to be sorted
+   * @param format - alphabetically or numerically
+   * @param order - ascending or descending
+   * @param {Boolean} caseSensitive
+   * @returns {array} - sorted array
+   */
+  arraySorting: function (array, format, order, caseSensitive = false) {
+    if (format === 'alphabetically') {
+      array.sort(function (firstValue, secondValue) {
+        if (!caseSensitive) {
+          firstValue = firstValue.toString().toLowerCase()
+          secondValue = secondValue.toString().toLowerCase()
+        }
+
+        if (order === 'ascending') {
+          return firstValue === secondValue ? 0 : firstValue > secondValue ? 1 : -1
+        } else {
+          return firstValue === secondValue ? 0 : firstValue < secondValue ? 1 : -1
+        }
+      })
+    } else if (format === 'numerically') {
+      if (order === 'ascending') {
+        array.sort((firstValue, secondValue) => firstValue - secondValue)
+      } else {
+        array.sort((firstValue, secondValue) => secondValue - firstValue)
+      }
+    }
+
+    return array
   }
 }
 
