@@ -60,7 +60,7 @@ The repository can be forked as well.
     ├── ...
     ├── cypress                  # Test files (alternatively `spec` or `tests`)
     │   └── e2e                  # End-to-end tests
-    │       ├── data             # Test data (users credentials, URLs) 
+    │       ├── data             # Test data (user credentials, URLs) 
     │       ├── features         # Files with test scenarios written in Gherkin 
     │       ├── step_definitions # Step definitions with Given, When, Then
     │       └── pages            # Page object models (locators, interactions)
