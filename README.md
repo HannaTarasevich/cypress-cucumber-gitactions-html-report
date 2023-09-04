@@ -1,5 +1,5 @@
 
-![cypress-cucumber-gitactions-html-report](https://socialify.git.ci/HannaTarasevich/cypress-cucumber-gitactions-html-report/image?description=1&descriptionEditable=Cypress%2013%2B%20with%20Cucumber%2C%20GitHub%20actions%20workflow%20and%20possibility%20to%20run%20tests%20in%20parallel%20and%20generate%20HTML%20report&language=1&name=1&owner=1&theme=Light)
+[![cypress-cucumber-gitactions-html-report](https://socialify.git.ci/HannaTarasevich/cypress-cucumber-gitactions-html-report/image?description=1&descriptionEditable=Cypress%2013%2B%20with%20Cucumber%2C%20GitHub%20actions%20workflow%20and%20possibility%20to%20run%20tests%20in%20parallel%20and%20generate%20HTML%20report&language=1&name=1&owner=1&theme=Light)](https://socialify.git.ci/HannaTarasevich/cypress-cucumber-gitactions-html-report/image?description=1&descriptionEditable=Cypress%2013%2B%20with%20Cucumber%2C%20GitHub%20actions%20workflow%20and%20%20possibility%20to%20run%20tests%20in%20parallel%20and%20generate%20HTML%20report&language=1&name=1&owner=1&theme=Light)
 
 ## Pre-requisites
 
