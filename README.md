@@ -103,3 +103,4 @@ The result can be found on `Actions` tab of the repository.
 ## Useful links:
 
  - [Cypress documentation](https://docs.cypress.io/guides/overview/why-cypress)
+ - [Gherkin documentation](https://cucumber.io/docs/gherkin/)
