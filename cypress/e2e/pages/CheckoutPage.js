@@ -2,27 +2,27 @@ import { productsPage } from '@pages/ProductsPage'
 
 class CheckoutPage {
   elements = {
+    cancelBtn: () => cy.get('#cancel'),
     checkoutBtn: () => cy.get('#checkout'),
+    completedOrderBackHomeBtn: () => cy.get('#back-to-products'),
+    completedOrderImg: () => cy.get('img.pony_express'),
+    completedOrderInfoMessage: () => cy.get('.complete-text'),
+    completedOrderThankYouMessage: () => cy.get('.complete-header'),
+    continueBtn: () => cy.get('#continue'),
     continueShoppingBtn: () => cy.get('#continue-shopping'),
-    removeBtn: () => cy.get('.cart_button'),
-    productItemTitle: () => productsPage.elements.productItemTitle(),
+    countField: () => cy.get('.cart_quantity'),
+    finishBtn: () => cy.get('#finish'),
+    firstNameInput: () => cy.get('#first-name'),
+    itemPriceSummary: () => cy.get('.summary_subtotal_label'),
+    lastNameInput: () => cy.get('#last-name'),
+    paymentAndShipmentInfo: () => cy.get('.summary_value_label'),
     productItemDescription: () => productsPage.elements.productItemDescription(),
     productItemPrice: () => productsPage.elements.productItemPrice(),
-    firstNameInput: () => cy.get('#first-name'),
-    lastNameInput: () => cy.get('#last-name'),
-    zipCodeInput: () => cy.get('#postal-code'),
-    finishBtn: () => cy.get('#finish'),
-    countField: () => cy.get('.cart_quantity'),
-    cancelBtn: () => cy.get('#cancel'),
-    continueBtn: () => cy.get('#continue'),
+    productItemTitle: () => productsPage.elements.productItemTitle(),
+    removeBtn: () => cy.get('.cart_button'),
     summaryLabels: () => cy.get('.summary_info_label'),
-    paymentAndShipmentInfo: () => cy.get('.summary_value_label'),
-    itemPriceSummary: () => cy.get('.summary_subtotal_label'),
     taxSummary: () => cy.get('.summary_tax_label'),
-    completedOrderImg: () => cy.get('img.pony_express'),
-    completedOrderThankYouMessage: () => cy.get('.complete-header'),
-    completedOrderInfoMessage: () => cy.get('.complete-text'),
-    completedOrderBackHomeBtn: () => cy.get('#back-to-products')
+    zipCodeInput: () => cy.get('#postal-code')
   }
 
   clickOnBtn (button = 'continue shopping' || 'continue' || 'cancel' || 'checkout' || 'finish' || 'back home') {

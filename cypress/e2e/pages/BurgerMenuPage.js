@@ -2,12 +2,12 @@ import { helpers } from '@helpers'
 
 class BurgerMenu {
   elements = {
-    menuArea: () => cy.get('.bm-menu'),
-    allItemsOption: () => cy.get('#inventory_sidebar_link'),
     aboutOption: () => cy.get('#about_sidebar_link'),
+    allItemsOption: () => cy.get('#inventory_sidebar_link'),
+    closeIcon: () => cy.get('#react-burger-cross-btn'),
     logoutOption: () => cy.get('#logout_sidebar_link'),
-    resetAppState: () => cy.get('#reset_sidebar_link'),
-    closeIcon: () => cy.get('#react-burger-cross-btn')
+    menuArea: () => cy.get('.bm-menu'),
+    resetAppState: () => cy.get('#reset_sidebar_link')
   }
 
   selectOption (option = 'all items' || 'about' || 'logout' || 'reset app state' || 'close') {

@@ -1,12 +1,12 @@
 class ProductsPage {
   elements = {
-    productItemTitle: () => cy.get('.inventory_item_name'),
+    addToCartBtn: () => cy.get('.pricebar .btn_primary'),
+    pageTitle: () => cy.get('.title'),
     productItemDescription: () => cy.get('.inventory_item_desc'),
     productItemImg: () => cy.get('.inventory_item_img img'),
     productItemPrice: () => cy.get('.inventory_item_price'),
-    addToCartBtn: () => cy.get('.pricebar .btn_primary'),
+    productItemTitle: () => cy.get('.inventory_item_name'),
     removeBtn: () => cy.get('.btn_secondary'),
-    pageTitle: () => cy.get('.title'),
     sortDropdown: () => cy.get('.product_sort_container')
   }
 
